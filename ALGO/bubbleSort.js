@@ -17,3 +17,5 @@ function bubbleSort(arr){
 const Arr = [6,4,12,10,9];
 bubbleSort(Arr);
 console.log(Arr);
+
+
