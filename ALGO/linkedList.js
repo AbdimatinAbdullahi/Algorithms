@@ -47,6 +47,29 @@ class LinkedList {
         this.size++
     }
 
+    insert(val, index){
+        if(index < 0 || index > this.size){
+            return
+        }
+
+        if(index == 0){
+            this.prepend(val);
+        }
+        else
+        {
+            const node = new Node(val);
+            let prev = this.head;
+            for(let i = 0; i < index - 1; i++){
+                prev = prev.next;
+            }
+            node.next = prev.next;
+            prev.next = node;
+            this.size++;
+        }
+
+         
+    }
+
     print(){
         if(this.isEmpty()){
             console.log(`Nothing to Print`)
