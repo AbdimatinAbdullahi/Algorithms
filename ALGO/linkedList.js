@@ -70,6 +70,31 @@ class LinkedList {
          
     }
 
+    remove(index){
+        if(index < 0 || index >= this.size){
+            return null;
+        }
+
+        let rmvNode 
+        if(index == 0){   
+            rmvNode = this.head;         
+            this.head = this.head.next
+        }
+
+        if(index > 0){
+            let prv = this.head;
+            for(let i = 0; i < index -1; i++){
+                prv = prv.next;
+            }
+            rmvNode = prv.next; //let prv.next points to the removed node.
+            prv.next = rmvNode.next; //let prev.next points to where the rmvNode points to.
+        }
+
+        this.size--;
+        return rmvNode.val;
+        
+    }
+
     print(){
         if(this.isEmpty()){
             console.log(`Nothing to Print`)
