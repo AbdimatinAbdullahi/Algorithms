@@ -138,6 +138,20 @@ class LinkedList {
             }
         }
     }
+
+    reverse(){
+        let prev = null;
+        let curr = this.head;
+
+        while(curr){ //While curr exits, since the curr will ultimately going to point to null at the end
+            let next = curr.next; // temporary pointer is created and it value is assigned to curr.next
+            curr.next = prev; //Curr.next is pointed to prev
+            prev = curr; //prev is assigned to curr, for now both curr and prev points at same location
+            curr = next; // curr pointer is advanced to point to next
+        }
+
+        this.head = prev; // At the end, both curr and next will point to null and this.head is assigned to prev
+    }
    }
 
 
