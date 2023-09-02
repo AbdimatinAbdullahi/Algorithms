@@ -30,6 +30,22 @@ class LinkedList {
         }
         this.size++
     }
+    append(val){
+        const node = new Node(val)
+        if(this.isEmpty()){
+            this.prepend(node.val)
+            this.size = 0
+        }
+        else{
+            let curr = this.head;
+
+            while(curr.next != null){
+                curr = curr.next;
+            }
+            curr.next = node;
+        }
+        this.size++
+    }
 
     print(){
         if(this.isEmpty()){
