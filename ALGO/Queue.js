@@ -8,7 +8,7 @@ class Queue {
     }
 
     dequeue(){
-        return this.item.shift();
+        return this.item.shift(); //Big 0 (n)
     }
 
     size(){
