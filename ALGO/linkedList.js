@@ -112,6 +112,32 @@ class LinkedList {
         }
     }
 
+    removeValue(target){
+        if(this.isEmpty()){
+            return null
+        }
+
+        if(this.head.val == target){ //Takes care of possible remove if value bieng wanted to be removed collides with the value in the this.head
+            this.head = this.head.next; //this head is advenced to point to the pointer where this.head points to.
+            this.size--;
+            return target;
+        }
+
+        else{
+            let prev  = this.head;
+
+            while(prev.next && prev.next.val != target){
+                prev= prev.next;
+            }
+
+            if(prev.next){ //If prev. next is true but prev.next.value equals the target
+                let removeNode = prev.next; //Assign the remove node to point to remove node.
+                prev.next = removeNode.next; // let know the prev.next points to remove node .next
+                this.size--;
+                return target
+            }
+        }
+    }
    }
 
 
