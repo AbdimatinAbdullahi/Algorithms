@@ -95,21 +95,41 @@ class LinkedList {
         
     }
 
-    print(){
+    
+    reverse(){
+        let prev = null;
+        let curr = this.head;
+
+        while(curr){ //While curr exits, since the curr will ultimately going to point to null at the end
+            let next = curr.next; // temporary pointer is created and it value is assigned to curr.next
+            curr.next = prev; //Curr.next is pointed to prev
+            prev = curr; //prev is assigned to curr, for now both curr and prev points at same location
+            curr = next; // curr pointer is advanced to point to next
+        }
+
+        this.head = prev; // At the end, both curr and next will point to null and this.head is assigned to prev
+    }
+
+    search(value){
         if(this.isEmpty()){
-            console.log(`Nothing to Print`)
+            return -1
         }
 
-        else{
-            let currNode = this.head;
-            let str = ""
-            while(currNode){
-                str += currNode.val + " "
-                currNode = currNode.next
-        }
+        else
+        {
+           let i = 0;
+           let curr = this.head;
 
-        console.log(str)
+           while(curr){
+            if(curr.val === value){
+                return i;
+           
+            }
+            curr = curr.next;
+            i++;
+           }           
         }
+        return -1
     }
 
     removeValue(target){
@@ -139,27 +159,39 @@ class LinkedList {
         }
     }
 
-    reverse(){
-        let prev = null;
-        let curr = this.head;
-
-        while(curr){ //While curr exits, since the curr will ultimately going to point to null at the end
-            let next = curr.next; // temporary pointer is created and it value is assigned to curr.next
-            curr.next = prev; //Curr.next is pointed to prev
-            prev = curr; //prev is assigned to curr, for now both curr and prev points at same location
-            curr = next; // curr pointer is advanced to point to next
+    print(){
+        if(this.isEmpty()){
+            console.log(`Nothing to Print`)
         }
 
-        this.head = prev; // At the end, both curr and next will point to null and this.head is assigned to prev
+        else{
+            let currNode = this.head;
+            let str = ""
+            while(currNode){
+                str += currNode.val + " "
+                currNode = currNode.next
+        }
+
+        console.log(str)
+        }
     }
+
+   
+
    }
 
 
 
 
 const list = new LinkedList();
+
 list.prepend(0)
 list.prepend(10)
 list.prepend(20)
 list.prepend(30)
+list.append(70)
+list.removeValue(70)
+list.insert(90,2)
+console.log(list.search(10))
+list.reverse()
 list.print()
